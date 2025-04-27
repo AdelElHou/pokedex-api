@@ -50,5 +50,46 @@ API robuste et sécurisée
 ## 📹 Démonstration
 Une vidéo démontrant toutes les fonctionnalités et aspects techniques du projet est disponible ici. https://youtu.be/qtiCk-OaHIw
 ## 📚 Documentation
-La documentation complète de l'API, les instructions d'installation et les détails techniques sont disponibles dans le README du projet sur GitHub.
-Le projet démontre notre maîtrise des technologies d'authentification modernes et notre capacité à implémenter des fonctionnalités avancées dans une application Pokémon complète et sécurisée.
+## 🚀 Mise en place du projet
+### Prérequis
+
+Node.js (v14 ou plus récent)
+MongoDB
+npm ou yarn
+
+### Installation
+
+Clonez le dépôt
+
+git clone https://github.com/AdelElHou/pokedex-api.git
+cd pokedex-api
+
+Installez les dépendances
+
+npm install
+# ou
+yarn install
+
+Configurez les variables d'environnement
+
+cp .env.example .env
+# Modifiez le fichier .env avec vos propres valeurs
+
+Lancez le serveur de développement
+
+npm run dev
+# ou
+yarn dev
+
+Pour le frontend (si séparé)
+
+cd client
+npm install
+npm start
+
+
+### Configuration de la base de données
+L'application se connecte à MongoDB. Assurez-vous que votre fichier .env contient les variables suivantes :
+MONGODB_URI=mongodb://localhost:27017/pokedex
+JWT_SECRET=votre_secret_jwt_complexe
+PORT=5000
