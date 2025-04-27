@@ -1,75 +1,113 @@
-## Concepts à Comprendre
-1. REST API
-   - Méthodes HTTP (GET, POST, PUT, DELETE)
-   - Codes de statut HTTP
-   - Structure des URL
-   - CORS (Cross-Origin Resource Sharing)
+🐱‍👤 Projet Pokémon - Authentification & Gestion des Pokémon
+🎯 Objectif
+Ce projet est une application web de gestion de Pokémon avec un système d'authentification sécurisé basé sur JWT. Les utilisateurs peuvent se connecter, voir leurs Pokémon, et effectuer des recherches avancées. Un utilisateur admin peut accéder à tous les Pokémon.
 
-2. Express.js
-   - Routing
-   - Middleware
-   - Gestion des requêtes et réponses
-   - Configuration CORS
+🛠️ Fonctionnalités
+🔐 Authentification (JWT)
+Connexion / Inscription via formulaire.
 
-3. Sécurité de Base
-   - Validation des entrées
-   - Authentification
-   - Gestion des erreurs
-   - Politiques CORS
+Mots de passe sécurisés (bcrypt).
 
-## Configuration CORS
-CORS (Cross-Origin Resource Sharing) est un mécanisme qui permet à de nombreuses ressources (polices, JavaScript, etc.) d'une page web d'être demandées à partir d'un autre domaine que celui du domaine d'origine.
+Stockage du token JWT côté client (localStorage).
 
-Pour utiliser l'API depuis un autre domaine :
-1. L'API est configurée avec CORS activé
-2. Toutes les origines sont autorisées dans cette version de développement
-3. En production, vous devriez restreindre les origines autorisées
+Protection des routes (frontend + backend).
 
-Pour une configuration plus restrictive, vous pouvez modifier les options CORS :
+Déconnexion automatique après expiration du token.
 
-```javascript
-app.use(cors({
-  origin: 'https://votre-domaine.com',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-```
+📋 Gestion des Pokémon
+Affichage dynamique des Pokémon possédés.
 
-## Ressources Additionnelles
-- [Documentation Express.js](https://expressjs.com/fr/)
-- [Guide des Status HTTP](https://developer.mozilla.org/fr/docs/Web/HTTP/Status)
-- [REST API Best Practices](https://restfulapi.net/)
+Filtres avancés (par types, HP, attaque, etc.).
 
-## Support
-Pour toute question ou problème :
-1. Vérifiez la documentation
-2. Consultez les messages d'erreur dans la console
-3. Demandez de l'aide à votre formateur
+Animation 3D des cartes Pokémon.
 
-## Prochaines Étapes
-- Ajout d'une base de données (MongoDB)
-- Implémentation de tests automatisés
-- Déploiement de l'API
-- Documentation avec Swagger
+Accès Admin : voir tous les Pokémon.
 
-## Gestion des Fichiers Statiques
-Le serveur expose le dossier `assets` pour servir les images des Pokémon. Les images sont accessibles via l'URL :
-```
-http://localhost:3000/assets/pokemons/{id}.png
-```
+🚀 Installation
+Prérequis :
+Node.js (v16+)
 
-Par exemple, pour accéder à l'image de Pikachu (ID: 25) :
-```
-http://localhost:3000/assets/pokemons/25.png
-```
+MongoDB local ou distant (Atlas)
 
-### Configuration
-Le middleware `express.static` est utilisé pour servir les fichiers statiques :
-```javascript
-app.use('/assets', express.static(path.join(__dirname, '../assets')));
-```
+1️⃣ Cloner le projet :
+bash
+Copier
+Modifier
+git clone https://github.com/ton-utilisateur/pokedex-auth.git
+cd pokedex-auth
+2️⃣ Installer les dépendances :
+bash
+Copier
+Modifier
+npm install
+3️⃣ Créer un fichier .env :
+env
+Copier
+Modifier
+MONGO_URI=mongodb://localhost:27017/pokedex
+JWT_SECRET=supersecret
+4️⃣ Démarrer le backend :
+bash
+Copier
+Modifier
+npm run dev
+5️⃣ Démarrer le frontend :
+bash
+Copier
+Modifier
+cd frontend
+npm install
+npm start
+📂 Structure du Projet
+markdown
+Copier
+Modifier
+/models
+  - User.js
+  - Pokemon.js
+  - Type.js
+/middlewares
+  - authMiddleware.js
+/scripts
+  - createUsers.js
+/frontend
+  - App.jsx
+  - PokemonList.jsx
+📡 API Documentation
+🔑 Authentification
 
-### Sécurité
-- Seuls les fichiers du dossier `assets` sont exposés
-- Les autres dossiers du projet restent inaccessibles
-- En production, considérez l'utilisation d'un CDN pour les fichiers statiques
+Méthode	Endpoint	Description
+POST	/api/register	Inscription utilisateur
+POST	/api/login	Connexion utilisateur
+🐱‍🏍 Pokémon
+
+Méthode	Endpoint	Description
+GET	/api/pokemons	Récupère les Pokémon de l'utilisateur ou tous si admin
+🎬 Démonstration Vidéo
+👉 Voir la démo sur YouTube
+
+📝 Livrables
+ Code source sur GitHub.
+
+ README.md complet.
+
+ Vidéo de démonstration sur YouTube montrant :
+
+L'authentification fonctionnelle.
+
+Les filtres et animations sur les cartes Pokémon.
+
+L'accès admin à tous les Pokémon.
+
+💡 Conseils
+Commencez par l'authentification avant la feature.
+
+Testez régulièrement vos endpoints avec Postman.
+
+Utilisez les best practices de sécurité pour l'authentification.
+
+Commentez votre code et documentez vos API.
+
+⏰ Date de remise : 27 avril
+🤝 Crédits
+Développé par [Ton Nom] - Projet pédagogique.
